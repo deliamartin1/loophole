@@ -117,3 +117,8 @@ def upload():
 
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")  # REDOS001-safe
+
+
+def run_literal():
+    exec("x = 1")  # EVAL001-safe: literal string, not dynamic
+    compile("x = 1", "<s>", "exec")  # EVAL001-safe: literal source
